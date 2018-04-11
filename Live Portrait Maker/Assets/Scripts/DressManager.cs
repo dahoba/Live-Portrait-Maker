@@ -444,7 +444,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
         {
 
             case "particle_sparkle":
-                new_ = new Material(Shader.Find("Mobile/Particles/Additive"));
+                new_ = Resources.Load<Material>("Star");
                 //start size, start speed, shape, lifetime, emission rate, 
                 go.transform.localPosition = new Vector3(0, 87, 0);
                 go.name = "particle_sparkle";
@@ -471,7 +471,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 break;
             case "hartic":
 
-                new_ = new Material(Shader.Find("Mobile/Particles/Additive (Soft)"));
+                new_ = Resources.Load<Material>("Hart");
 
                 go.transform.localPosition = new Vector3(0, 456.6f, 0);
                 go.name = "hart";
@@ -499,7 +499,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 break;
 
             case "particle_snow":
-                new_ = new Material(Shader.Find("Particles/Alpha Blended"));
+                new_ = Resources.Load<Material>("Snow");
                 go.transform.localPosition = new Vector3(0, 1046, 0);
                 go.name = "particle_snow";
                 sm.shapeType = ParticleSystemShapeType.BoxEdge;

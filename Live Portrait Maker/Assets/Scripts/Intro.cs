@@ -221,7 +221,6 @@ public class Intro : MonoBehaviour
     void thatsIt()
     {
         
-        d.OnSingleTap -= Change;
         CanvasGroup cg = GetComponent<CanvasGroup>();
         cg.alpha = 0;
         LeanTween.cancel(pointer.gameObject);
@@ -230,8 +229,6 @@ public class Intro : MonoBehaviour
         speechBbl.gameObject.SetActive(true);
         speech.text = "that's it; have fun! :D";
         d.OnDoubleTap -= Change;
-
-
         //rescale + rotate
         StartCoroutine(wait(cg));
 
@@ -241,9 +238,9 @@ public class Intro : MonoBehaviour
 
     IEnumerator wait(CanvasGroup cg)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         transform.SetParent(GameObject.FindGameObjectWithTag("Respawn").transform, false);
-        d.OnSingleTap += Change;
+  
         d.setUpDelegates();
 
         LeanTween.value(speechBbl.gameObject, (float val) =>
