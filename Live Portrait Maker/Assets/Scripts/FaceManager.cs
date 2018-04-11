@@ -95,7 +95,7 @@ public class FaceManager : MonoBehaviour
 
         AnimateRoutine = StartCoroutine(animate());
         //if player's first time playing, begin tutorial
-        if (PlayerPrefs.GetInt("intro") != 1)
+        if (PlayerPrefs.GetInt("intro") != 2)
         {
             Intro();
         }

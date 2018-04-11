@@ -76,6 +76,7 @@ public class Intro : MonoBehaviour
 
     void tapOnce()
     {
+        d.OnSingleTap -= Change;
 
         //rescale + rotate
         LeanTween.value(speechBbl.gameObject, (float val) =>
@@ -92,6 +93,7 @@ public class Intro : MonoBehaviour
                 speechBbl.rectTransform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(-90, 0, val));
             }, 0.3f, 1f, 0.6f).setEaseOutQuart().setOnComplete(() =>
             {
+                d.OnSingleTap += Change;
                 StartCoroutine(bounce());
             });
         });
@@ -127,6 +129,7 @@ public class Intro : MonoBehaviour
 
     void tapTwice()
     {
+        d.OnSingleTap -= Change;
         CanvasGroup cg = GetComponent<CanvasGroup>();
         cg.alpha = 0;
         LeanTween.cancel(pointer.gameObject);
@@ -141,8 +144,9 @@ public class Intro : MonoBehaviour
             cg.alpha = val;
             speechBbl.rectTransform.localScale = Vector3.one * val;
             speechBbl.rectTransform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(-90, 0, val));
-        }, 0.3f, 1f, 0.4f).setDelay(1).setEaseOutQuart().setOnComplete(() =>
+        }, 0.3f, 1f, 0.4f).setEaseOutQuart().setOnComplete(() =>
         {
+            d.OnSingleTap += Change;
             StartCoroutine(bounce());
         });
 
@@ -216,7 +220,8 @@ public class Intro : MonoBehaviour
 
     void thatsIt()
     {
-
+        
+        d.OnSingleTap -= Change;
         CanvasGroup cg = GetComponent<CanvasGroup>();
         cg.alpha = 0;
         LeanTween.cancel(pointer.gameObject);
@@ -248,7 +253,7 @@ public class Intro : MonoBehaviour
             speechBbl.rectTransform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(-90, 0, val));
         }, 0.3f, 1f, 0.6f).setEaseOutQuart().setOnComplete(() =>
         {
-
+            d.OnSingleTap += Change;
             StartCoroutine(bounce());
         });
 
