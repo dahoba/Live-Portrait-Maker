@@ -29,13 +29,11 @@ MonoBehaviour:
   m_autoSizeTextContainer: 0
   m_fallbackFontAssets: []
   m_matchMaterialPreset: 1
-  m_defaultSpriteAsset: {fileID: 11400000, guid: 9a952e2781ef26940ae089f1053ef4ef,
-    type: 2}
+  m_defaultSpriteAsset: {fileID: 0}
   m_defaultSpriteAssetPath: Sprite Assets/
   m_defaultColorGradientPresetsPath: Color Gradient Presets/
-  m_enableEmojiSupport: 1
-  m_defaultStyleSheet: {fileID: 11400000, guid: 54d1085f9a2fdea4587fcfc7dddcd4bc,
-    type: 2}
+  m_enableEmojiSupport: 0
+  m_defaultStyleSheet: {fileID: 0}
   m_leadingCharacters: {fileID: 4900000, guid: 8d713940fcbede142ae4a33ea0062b33, type: 3}
   m_followingCharacters: {fileID: 4900000, guid: 312ba5b9e90627940866e19549a788cf,
     type: 3}

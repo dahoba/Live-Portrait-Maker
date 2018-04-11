@@ -3391,9 +3391,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c1269e6f8003a4bc78e182783f3c7fd6, type: 3}
   hair:
   - {fileID: 21300000, guid: 3aabb650dc0f241a0babfa9e30f0c9cb, type: 3}
+  - {fileID: 21300000, guid: ea5da5a85ef6a4b95b091e66eabc15b6, type: 3}
+  - {fileID: 21300000, guid: 74af3f2b1ef44407c80a9918ffa38772, type: 3}
   - {fileID: 21300000, guid: a1d3b88dc98574599ad107e90d0da608, type: 3}
   - {fileID: 21300000, guid: 2a5d37aaa47424d0696d416b7241f4ab, type: 3}
-  - {fileID: 21300000, guid: ea5da5a85ef6a4b95b091e66eabc15b6, type: 3}
+  - {fileID: 21300000, guid: b646d3e95f6fb4f03a1426860f476aa1, type: 3}
   clothes:
   - {fileID: 21300000, guid: e891a05f5c4494d9d810853430cf272e, type: 3}
   - {fileID: 21300000, guid: d7a48b4ddf0384dfd9b5b6dae14ae978, type: 3}

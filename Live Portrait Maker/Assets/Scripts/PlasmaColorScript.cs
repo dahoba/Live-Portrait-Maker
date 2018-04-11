@@ -19,7 +19,7 @@ public class PlasmaColorScript : MonoBehaviour
 
     void Awake()
     {
-        if (CanvasImage != null)
+        if (CanvasImage == null)
         {
             CanvasImage = this.gameObject.GetComponent<Image>();
         }

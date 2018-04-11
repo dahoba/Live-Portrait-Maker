@@ -186,7 +186,7 @@ Input.GetTouch(0).position;
     {
 
         //hair: pos y from 928.7 to 940.7 to 952.7
-        hair.rectTransform.anchoredPosition = new Vector2(turnRatio(towards.x, Screen.width, 12, -12), turnRatio(towards.y, Screen.height, 960f, 928.7f));
+        hair.rectTransform.anchoredPosition = new Vector2(turnRatio(towards.x, Screen.width, 12, -12), turnRatio(towards.y, Screen.height, 1123.59f, 1061.59f));
         //bangs: rot x from 9.94 to 0
         bangs.rectTransform.eulerAngles = new Vector3(turnRatio(towards.y, Screen.height, 9.94f, 0), 0, 0);
         bangs.rectTransform.anchoredPosition = new Vector2(turnRatio(towards.x, Screen.width, -12, 12), bangs.rectTransform.anchoredPosition.y);
