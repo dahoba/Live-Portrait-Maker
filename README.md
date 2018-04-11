@@ -2,7 +2,6 @@
 A 2.5D Unity dress-up game
 
 Free on itchio / Google Play / App Store
-
 ---
 Live Portrait maker is a simple Unity (C#) dress up game using Unity's UI and ShaderLab 😎Hopefully it can help fellow devs!
 ---
