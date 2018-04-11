@@ -1,4 +1,4 @@
-# Live Portrait Maker🎉
+# Live Portrait Maker 🎉
 A 2.5D Unity dress-up game
 
 Free on itchio / Google Play / App Store
