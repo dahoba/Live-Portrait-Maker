@@ -13,10 +13,6 @@ public class WaterScript : MonoBehaviour
     [Range(0.0f, 4f)] public float Speed = 1.0f;
     [Range(0.0f, 1f)] public float EValue = 1.0f;
     [Range(-4.0f, 4f)] public float Light = 3.0f;
-
-
-    Material tempMaterial;
-    Material defaultMaterial;
     Image CanvasImage;
 
 
@@ -27,15 +23,8 @@ public class WaterScript : MonoBehaviour
             CanvasImage = this.gameObject.GetComponent<Image>();
         }
 
-        if (defaultMaterial == null)
-        {
-            defaultMaterial = new Material(Shader.Find("Sprites/Default"));
-
-        }
-
-        tempMaterial = new Material(Shader.Find(shader));
+        Material tempMaterial = new Material(Shader.Find(shader));
         tempMaterial.hideFlags = HideFlags.None;
-
         CanvasImage.material = tempMaterial;
 
     }

@@ -16,9 +16,6 @@ public class WaterfallScript : MonoBehaviour
     [Range(-2f, 2f)] public float TValue = 0.6f;
     public Color LightColor = new Color(0.2f, 0.5f, 1, 1);
     [Range(-1f, 1f)] public float Light = 0.5f;
-
-
-    Material tempMaterial;
     Image CanvasImage;
 
 
@@ -28,7 +25,7 @@ public class WaterfallScript : MonoBehaviour
         {
             CanvasImage = GetComponent<Image>();
         }
-        tempMaterial = new Material(Shader.Find(shader));
+        Material tempMaterial = new Material(Shader.Find(shader));
         tempMaterial.hideFlags = HideFlags.None;
 
         CanvasImage.material = tempMaterial;
@@ -38,9 +35,7 @@ public class WaterfallScript : MonoBehaviour
         if (__MainTex2)
         {
             __MainTex2.wrapMode = TextureWrapMode.Repeat;
-
             CanvasImage.material.SetTexture("_MainTex2", __MainTex2);
-
         }
     }
 

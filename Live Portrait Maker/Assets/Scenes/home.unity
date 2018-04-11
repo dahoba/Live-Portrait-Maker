@@ -881,7 +881,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.564
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -962,7 +962,6 @@ MonoBehaviour:
   - {fileID: 2026449124}
   half: {fileID: 21300000, guid: bb9c0527479c1491d940d8e412e79b9d, type: 3}
   blink: {fileID: 21300000, guid: fa923245a45724b4fb7ae39ad9dcda5f, type: 3}
-  tapThreshold: 0.25
   HorzEye: 0
   VertEye: 0
   VertNose: 0
