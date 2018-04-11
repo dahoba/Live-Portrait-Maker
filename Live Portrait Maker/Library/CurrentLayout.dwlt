@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -152,8 +152,8 @@ MonoBehaviour:
     y: 0
     width: 304
     height: 806
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -321,7 +321,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ccf7ffff9efbffff000000007e300000
+    m_ExpandedIDs: 3adfffff04e1ffff14f9ffff84fbffff00000000fa2d0000402f0000363400007c350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -383,20 +383,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Graphics
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Graphics
+  - Assets/Scenes
   m_LastFoldersGridSize: 96
   m_LastProjectPath: /Users/angelahe/Documents/GitHub/Live-Portrait-Maker/Live Portrait
     Maker
   m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fa280000
-    m_LastClickedID: 10490
-    m_ExpandedIDs: 000000003a28000000ca9a3bffffff7f
+    m_SelectedIDs: 142b0000
+    m_LastClickedID: 11028
+    m_ExpandedIDs: 000000004428000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -424,7 +424,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003a280000
+    m_ExpandedIDs: 0000000044280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -449,8 +449,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7a010000
-    m_LastClickedInstanceID: 378
+    m_SelectedInstanceIDs: 022a0000
+    m_LastClickedInstanceID: 10754
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f0970000602b00006829000086280000162c0000102c00003c2c0000602c00004a2900009e290000ce2c0000f42800004a2700001c270000122700001a270000a4290000482700002432000048300000964e0000c05b0000445400003c6300006a6100000000000092300000ec3200006e640000c2430000fc67000018450000d8350000ec3600001c360000c23f0000023b00005448000068320000cc310000
     m_RenameOverlay:
