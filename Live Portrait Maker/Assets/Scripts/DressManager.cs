@@ -448,9 +448,11 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 //start size, start speed, shape, lifetime, emission rate, 
                 go.transform.localPosition = new Vector3(0, 87, 0);
                 go.name = "particle_sparkle";
-                main.startLifetime = 10;
-                main.startSpeed = new ParticleSystem.MinMaxCurve(0, 1);
-                main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.8f);
+                main.duration=5;
+                main.startLifetime = 5;
+                main.maxParticles=15;
+                main.startSpeed = new ParticleSystem.MinMaxCurve(0.05f, 0.6f);
+                main.startSize = new ParticleSystem.MinMaxCurve(0.2f, 0.8f);
 
                 em.rateOverTime = new ParticleSystem.MinMaxCurve(3, 6);
                 sm.angle = 15.53f;
@@ -507,7 +509,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
                 main.gravityModifier = 0.01f;
                 main.startSize = new ParticleSystem.MinMaxCurve(UnityEngine.Random.Range(0.2f, 0.4f),
-                UnityEngine.Random.Range(0.5f, 0.8f));
+                UnityEngine.Random.Range(0.4f, 0.6f));
                 main.startLifetime = 15;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 2);
 
