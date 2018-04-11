@@ -326,8 +326,8 @@ Input.GetTouch(0).position;
                         }
                 }
             }
-        }
     }
+
 #endif
 
     //Remove the image mapped to key - used when undoing and removing
