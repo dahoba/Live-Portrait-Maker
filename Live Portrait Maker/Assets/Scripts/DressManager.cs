@@ -444,7 +444,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
         {
 
             case "particle_sparkle":
-                new_ = new Material(Shader.Find("Particles/Additive"));
+                new_ = new Material(Shader.Find("Mobile/Particles/Additive"));
                 //start size, start speed, shape, lifetime, emission rate, 
                 go.transform.localPosition = new Vector3(0, 87, 0);
                 go.name = "particle_sparkle";
@@ -471,7 +471,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 break;
             case "hartic":
 
-                new_ = new Material(Shader.Find("Particles/Additive (Soft)"));
+                new_ = new Material(Shader.Find("Mobile/Particles/Additive (Soft)"));
 
                 go.transform.localPosition = new Vector3(0, 456.6f, 0);
                 go.name = "hart";
