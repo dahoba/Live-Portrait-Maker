@@ -103,7 +103,7 @@ bool equipped)
                     {
                         one.transform.GetChild(2).eulerAngles = Vector3.zero;
                     });
-                    
+
                     dm.x.onClick.AddListener(() =>
                     {
 
@@ -113,7 +113,7 @@ bool equipped)
                         dm.fm.VertNose = VertNose;
 
                     });
-                    
+
                     one.onValueChanged.AddListener((float val) =>
                     {
                         fs.set.rectTransform.sizeDelta = new Vector2(349 + ratio2 * val, 304 + ratio2 * val);
@@ -163,7 +163,7 @@ bool equipped)
                     float origY = fs.set.rectTransform.anchoredPosition.y;
                     one.value = fs.set.rectTransform.eulerAngles.z / ratio;
                     two.value = (fs.set.rectTransform.anchoredPosition.y - 34f) / ratio2;
-                    
+
                     dm.x.onClick.AddListener(() =>
                     {
                         oneI.sprite = before;
@@ -176,7 +176,7 @@ bool equipped)
                         fs.set2.rectTransform.anchoredPosition = new Vector2(fs.set2.rectTransform.anchoredPosition.x, origY);
 
                     });
-                    
+
 
                     one.onValueChanged.AddListener((float val) =>
                     {
@@ -212,28 +212,29 @@ bool equipped)
             }
             else
             {
-
                 if (fs.set != null)
                 {
-
-
-
-                    if (i == itemType.WaterScript)
+                    if (!equipped)
                     {
-                        dm.x.onClick.AddListener(() =>
-                                  {
-                                      dm.fm.XtraStuff.Remove("wd");
-                                      Destroy(dm.fm.transform.Find("wd").gameObject);
-                                  });
+                        if (i == itemType.WaterScript)
+                        {
+                            dm.x.onClick.AddListener(() =>
+                                {
+                                    dm.fm.XtraStuff.Remove("wd");
+                                    Destroy(dm.fm.transform.Find("wd").gameObject);
+                                });
+                        }
+                        else if (i == itemType.WaterfallScript)
+                        {
+                            dm.x.onClick.AddListener(() =>
+                                {
+                                    dm.fm.XtraStuff.Remove("wf");
+                                    Destroy(dm.fm.transform.Find("wf").gameObject);
+                                });
+                        }
                     }
-                    else if (i == itemType.WaterfallScript)
-                    {
-                        dm.x.onClick.AddListener(() =>
-           {
-               dm.fm.XtraStuff.Remove("wf");
-               Destroy(dm.fm.transform.Find("wf").gameObject);
-           });
-                    }
+
+                    
                     if (i == itemType.bg && fs.set.sprite == null) cpa.Color = Camera.main.backgroundColor;
                     else cpa.Color = fs.set.color;
                     cpa.Reset();

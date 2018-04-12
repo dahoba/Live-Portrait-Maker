@@ -305,13 +305,15 @@ public class DressManager : MonoBehaviour
         }
         else
         {
+
             if (ui.set != null && ui.set.sprite != null)
             {
                 fm.Remove(ui.set.sprite.name.Substring(0, 2));
             }
             else if (ui.before != null)
             {
-                fm.Remove(ui.before.name.Substring(0, 2));
+                string key = ui.before.name.Substring(0, 2);
+                fm.Remove(key);
             }
 
 
@@ -426,6 +428,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
         if (index < go.transform.parent.childCount) go.transform.SetSiblingIndex(index);
         var main = ps.main;
+
         if (!random)
         {
             cpa.UpdateColorAction += () =>
@@ -446,11 +449,10 @@ Mathf.Lerp(1, 0.35f, cpa.B));
             case "particle_sparkle":
                 new_ = Resources.Load<Material>("Star");
                 //start size, start speed, shape, lifetime, emission rate, 
-                go.transform.localPosition = new Vector3(0, 87, 0);
+                go.transform.localPosition = new Vector3(0, 0, 0);
                 go.name = "particle_sparkle";
-                main.duration=5;
                 main.startLifetime = 5;
-                main.maxParticles=15;
+                main.maxParticles = 15;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.05f, 0.6f);
                 main.startSize = new ParticleSystem.MinMaxCurve(0.2f, 0.8f);
 
@@ -475,13 +477,14 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
                 new_ = Resources.Load<Material>("Hart");
 
-                go.transform.localPosition = new Vector3(0, 456.6f, 0);
+                go.transform.localPosition = new Vector3(0, Screen.height / 3.5f, 0);
                 go.name = "hart";
-                main.startLifetime = 5;
+                main.startLifetime = 3;
+                main.maxParticles = 8;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 0.4f);
-                main.startSize = new ParticleSystem.MinMaxCurve(0.3f, 0.7f);
-                main.startRotation = new ParticleSystem.MinMaxCurve(-45, 45);
-                em.rateOverTime = new ParticleSystem.MinMaxCurve(3);
+                main.startSize = new ParticleSystem.MinMaxCurve(0.3f, 0.9f);
+                main.startRotation = new ParticleSystem.MinMaxCurve(-0.45f, 0.45f);
+                em.rateOverTime = 3;
 
                 sm.shapeType = ParticleSystemShapeType.SingleSidedEdge;
                 sm.radius = 2.473689f;
@@ -502,23 +505,25 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
             case "particle_snow":
                 new_ = Resources.Load<Material>("Snow");
-                go.transform.localPosition = new Vector3(0, 1046, 0);
+                go.transform.localPosition = new Vector3(0, Screen.height / 2, 0);
                 go.name = "particle_snow";
                 sm.shapeType = ParticleSystemShapeType.BoxEdge;
-                sm.scale = new Vector3(5.3939f, 1, 1);
+                sm.scale = new Vector3(4.5f, 1, 1);
 
                 main.gravityModifier = 0.01f;
                 main.startSize = new ParticleSystem.MinMaxCurve(UnityEngine.Random.Range(0.2f, 0.4f),
-                UnityEngine.Random.Range(0.4f, 0.6f));
-                main.startLifetime = 15;
+                UnityEngine.Random.Range(0.45f, 0.6f));
+
+                main.startLifetime = 15.5f;
+                main.maxParticles = 30;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 2);
 
 
-                em.rateOverTime = new ParticleSystem.MinMaxCurve(3, 7);
+                em.rateOverTime = 3;
 
                 ParticleSystem.VelocityOverLifetimeModule vl = ps.velocityOverLifetime;
                 vl.enabled = true;
-                vl.x = new ParticleSystem.MinMaxCurve(-0.25f, 0.25f);
+                vl.x = new ParticleSystem.MinMaxCurve(-0.2f, 0.2f);
                 break;
             default:
                 new_ = new Material(Shader.Find("Particles/Alpha Blended"));

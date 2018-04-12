@@ -630,7 +630,7 @@ Input.GetTouch(0).position;
             case itemType.bg:
                 hm.set = bg;
                 if (newThang == null)
-                    hm.set.sprite = null;
+                    hm.set.color=Color.clear;
                 else
                 {
                     hm.beforeC = hm.set.color;
@@ -673,24 +673,16 @@ Input.GetTouch(0).position;
 
             case itemType.WaterScript:
                 setHm(Vector2.zero, bg, bg.transform.parent, 0, "wd", ref hm);
-                hm.set.sprite = null;
-                WaterScript wd = hm.set.gameObject.AddComponent<WaterScript>();
-                wd._Alpha = 0.57f;
-                wd.Heat = 1.92f;
-                wd.Speed = 0.46f;
-                wd.Light = -4;
-                wd.EValue = 0.69f;
+                if (hm.set.gameObject.GetComponent<WaterScript>() == null)
+                    hm.set.gameObject.AddComponent<WaterScript>();
+                hm.set.sprite=null;
                 hm.set.gameObject.name = "wd";
                 break;
             case itemType.WaterfallScript:
                 setHm(Vector2.zero, bg, bg.transform.parent, 0, "wf", ref hm);
-                hm.set.sprite = null;
-                WaterfallScript wf = hm.set.gameObject.AddComponent<WaterfallScript>();
-                wf.Liquid = 0.1f;
-                wf.Speed = -0.4f;
-                wf.Light = -0.62f;
-                wf.EValue = -0.46f;
-                wf.TValue = -0.38f;
+                if (hm.set.gameObject.GetComponent<WaterfallScript>() == null)
+                    hm.set.gameObject.AddComponent<WaterfallScript>();
+                hm.set.sprite=null;
                 hm.set.gameObject.name = "wf";
                 break;
             case itemType.glitch:
