@@ -1,3 +1,5 @@
+![banner](https://img.itch.zone/aW1nLzExNjU5MjQucG5n/original/eMa3fc.png "banner")
+
 # Live Portrait Maker 🎉
 
 Free on itchio / Google Play / App Store
