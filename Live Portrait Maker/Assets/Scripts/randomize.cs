@@ -140,7 +140,7 @@ public class randomize : MonoBehaviour
                     
                     uiArr.Add(dm.fm.faceSet(newT, it));
                     //if heart..
-                    if (it == itemType.hearts && GameObject.FindGameObjectWithTag("Finish").transform.Find("hart") == null) dm.setUpParticles(dm.xtra[19], 1, true);
+                    if (it == itemType.hearts && GameObject.FindGameObjectWithTag("Finish").transform.Find("hartic") == null) dm.setUpParticles(dm.xtra[19], 1, true);
                     // else if (it == itemType.particles) dm.setUpParticles(uiArr[count].before, 0);
                 }
 
@@ -179,7 +179,7 @@ public class randomize : MonoBehaviour
 
                 if (ui.set.sprite.name == "hart")
                 {
-                    var main = GameObject.FindGameObjectWithTag("Finish").transform.Find("hart").GetComponent<ParticleSystem>().main;
+                    var main = GameObject.FindGameObjectWithTag("Finish").transform.Find("hartic").GetComponent<ParticleSystem>().main;
                     main.startColor = new ParticleSystem.MinMaxGradient(rand,
                     new Color(rand.r, rand.g, rand.b, 0.2f));
                 }
