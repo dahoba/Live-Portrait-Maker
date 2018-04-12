@@ -6,7 +6,7 @@ Free on [**itchio**](https://zephyo.itch.io/live-portrait-maker) / [**Google Pla
 
 ---
 
-Live Portrait Maker is a simple 2.5D Unity (C#) dress up game using Unity's UI and ShaderLab 😎Hopefully it can help fellow devs!
+Live Portrait Maker is a smol 2.5D Unity (C#) dress up experiment I did using Unity's UI and ShaderLab 😎Hopefully it can help fellow devs!
 
 ---
 ## Unity Assets
