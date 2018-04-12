@@ -350,8 +350,8 @@ Input.GetTouch(0).position;
                 //check if hart
                 else if (key == "ha")
                 {
-                    GameObject ps = GameObject.FindGameObjectWithTag("Finish").transform.Find("hart").gameObject;
-                    if (ps != null) Destroy(ps);
+                    Transform ps = GameObject.FindGameObjectWithTag("Finish").transform.Find("hartic");
+                    if (ps != null) Destroy(ps.gameObject);
                 }
 
             }
@@ -360,10 +360,15 @@ Input.GetTouch(0).position;
                 x.gameObject.SetActive(false);
             }
         }
-        else if (key == "pa")
+        else if (key=="pa")
         {
-            GameObject ps = GameObject.FindGameObjectWithTag("Finish").transform.GetChild(0).gameObject;
-            if (ps != null) Destroy(ps);
+            Transform ps = GameObject.FindGameObjectWithTag("Finish").transform.Find("particle_snow");
+            if (ps != null) Destroy(ps.gameObject);
+        }
+        else if (key=="pA")
+        {
+            Transform ps = GameObject.FindGameObjectWithTag("Finish").transform.Find("pArticle_sparkle");
+            if (ps != null) Destroy(ps.gameObject);
         }
         else if (key == "GX")
         {

@@ -95,7 +95,7 @@ public class randomize : MonoBehaviour
             Color bg = dm.fm.bg.color;
 
             HashSet<string> s = new HashSet<string>(new string[]{
-           "b_","bh","e_", "eb", "l_", "n_", "bg", "t_", "bl", "pa"
+           "b_","bh","e_", "eb", "l_", "n_", "bg", "t_", "bl",
         });
             Button check = dm.transform.GetChild(1).GetChild(1).GetComponent<Button>();
 
@@ -137,6 +137,7 @@ public class randomize : MonoBehaviour
                 }
                 else if (enums.Contains((int)i))
                 {
+                    
                     uiArr.Add(dm.fm.faceSet(newT, it));
                     //if heart..
                     if (it == itemType.hearts && GameObject.FindGameObjectWithTag("Finish").transform.Find("hart") == null) dm.setUpParticles(dm.xtra[19], 1, true);

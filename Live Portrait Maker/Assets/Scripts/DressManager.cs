@@ -310,13 +310,11 @@ public class DressManager : MonoBehaviour
             {
                 fm.Remove(ui.set.sprite.name.Substring(0, 2));
             }
-            else if (ui.before != null)
+            else if (ui.before != null && (!ui.before.name.StartsWith("pa") || ui.before.name.StartsWith("pA")))
             {
                 string key = ui.before.name.Substring(0, 2);
                 fm.Remove(key);
             }
-
-
         }
     }
 
@@ -395,8 +393,8 @@ public class DressManager : MonoBehaviour
                 {
                     cpa.UpdateColorAction += () => { ui.set2.color = cpa.Color; };
                 }
-
-                if (ui.set.sprite != null && ui.set.sprite.name == "hart" && GameObject.FindGameObjectWithTag("Finish").transform.Find("hart") == null)
+               
+                if (ui.set.sprite != null && ui.set.sprite.name == "hart")
                 {
                     setUpParticles(xtra[19], 1);
                 }
@@ -413,7 +411,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 }
             }
         }
-        else if (ui.before != null && !isEquippedParticle(ui.before))
+        else if (ui.before != null)
         {
             setUpParticles(ui.before, 0);
         }
@@ -422,6 +420,18 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
     public void setUpParticles(Sprite particle, int index, bool random = false)
     {
+        if (isEquippedParticle(particle)){
+            var main2 = GameObject.FindGameObjectWithTag("Finish").transform.Find(particle.name).GetComponent<ParticleSystem>().main;
+              Color original = main2.startColor.colorMin;
+              cpa.UpdateColorAction += () =>
+            {
+                main2.startColor = new ParticleSystem.MinMaxGradient(cpa.Color,
+                new Color(cpa.Color.r, cpa.Color.g, cpa.Color.b, 0.2f));
+            };
+             x.onClick.AddListener(()=>{main2.startColor = new ParticleSystem.MinMaxGradient(original,
+                            new Color(original.r, original.g, original.b, 0.2f));});
+            return;
+        }
         GameObject go = new GameObject();
         go.transform.SetParent(GameObject.FindGameObjectWithTag("Finish").transform, false);
         ParticleSystem ps = go.AddComponent<ParticleSystem>();
@@ -446,11 +456,11 @@ Mathf.Lerp(1, 0.35f, cpa.B));
         switch (particle.name)
         {
 
-            case "particle_sparkle":
+            case "pArticle_sparkle":
                 new_ = Resources.Load<Material>("Star");
                 //start size, start speed, shape, lifetime, emission rate, 
                 go.transform.localPosition = new Vector3(0, 0, 0);
-                go.name = "particle_sparkle";
+                go.name = "pArticle_sparkle";
                 main.startLifetime = 5;
                 main.maxParticles = 15;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.05f, 0.6f);
@@ -478,7 +488,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 new_ = Resources.Load<Material>("Hart");
 
                 go.transform.localPosition = new Vector3(0, Screen.height / 3.5f, 0);
-                go.name = "hart";
+                go.name = "hartic";
                 main.startLifetime = 3;
                 main.maxParticles = 8;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 0.4f);

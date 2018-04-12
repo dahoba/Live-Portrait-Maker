@@ -234,10 +234,27 @@ bool equipped)
                         }
                     }
 
-                    
+
                     if (i == itemType.bg && fs.set.sprite == null) cpa.Color = Camera.main.backgroundColor;
                     else cpa.Color = fs.set.color;
                     cpa.Reset();
+                }
+                else
+                {
+                    if (i == itemType.particles && transform.GetChild(0).gameObject.activeSelf)
+                    {
+                        cpa.Color = GameObject.FindGameObjectWithTag("Finish").transform.Find(smth.name).GetComponent<ParticleSystem>().main.startColor.colorMin;
+                        cpa.Reset();
+                    }
+                    else
+                    {
+                        dm.x.onClick.AddListener(() =>
+                        {
+                            string key = smth.name.Substring(0, 2);
+                            dm.fm.Remove(key);
+                        });
+                    }
+
                 }
 
                 cpa.gameObject.SetActive(true);
