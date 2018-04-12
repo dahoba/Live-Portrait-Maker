@@ -2,7 +2,7 @@
 
 # Live Portrait Maker 🎉
 
-Free on itchio / Google Play / App Store
+Free on [**itchio**](https://zephyo.itch.io/live-portrait-maker) / [**Google Play**](https://zephyo.itch.io/live-portrait-maker) / [**App Store**](https://zephyo.itch.io/live-portrait-maker)
 
 ---
 
