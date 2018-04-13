@@ -99,7 +99,7 @@ public class DressManager : MonoBehaviour
     {
         if (check)
         {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
             if (Input.GetMouseButtonDown(0) &&
             !EventSystem.current.IsPointerOverGameObject())
             {

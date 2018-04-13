@@ -160,7 +160,7 @@ public class FaceManager : MonoBehaviour
         from = towards;
 
         Vector2 to =
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
           Input.mousePosition;
 #elif UNITY_IOS || UNITY_ANDROID
 Input.GetTouch(0).position;
@@ -246,7 +246,7 @@ Input.GetTouch(0).position;
 
     public void setUpDelegates()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         updateDelegate = UpdateEditor;
 #elif UNITY_IOS || UNITY_ANDROID
         updateDelegate = UpdateMobile;
@@ -288,7 +288,7 @@ Input.GetTouch(0).position;
         OnDoubleTap = null;
     }
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
     private void UpdateEditor()
     {
         if (Input.GetMouseButtonDown(0))
