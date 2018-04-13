@@ -264,18 +264,24 @@ public class DressManager : MonoBehaviour
             remove.onClick.AddListener(() =>
             {
                 equipped.SetActive(false);
-                string key;
+                string key = "EMPTY";
                 if (ui.set != null)
                     if (ui.set.sprite != null)
                         key = ui.set.sprite.name.Substring(0, 2);
                     else
                         key = ui.set.gameObject.name.Substring(0, 2);
-                else key = ui.before.name.Substring(0, 2);
-                fm.Remove(key);
+                else if (ui.before != null) key = ui.before.name.Substring(0, 2);
+                if (key != "EMPTY")
+                {
+                    fm.Remove(key);
+                }
                 x.onClick.RemoveAllListeners();
                 TurnOff(cp);
                 TurnOn(du);
+                remove.transform.parent.GetChild(4).gameObject.SetActive(false);
                 remove.gameObject.SetActive(false);
+                remove.onClick.RemoveAllListeners();
+
             });
         }
 
@@ -305,12 +311,19 @@ public class DressManager : MonoBehaviour
         }
         else
         {
-
-            if (ui.set != null && ui.set.sprite != null)
+            if (ui.set != null)
             {
-                fm.Remove(ui.set.sprite.name.Substring(0, 2));
+                if (ui.set.sprite != null)
+                    fm.Remove(ui.set.sprite.name.Substring(0, 2));
+                else
+                {
+                    if (ui.set.gameObject.name == "wf")
+                        ui.set.GetComponent<WaterfallScript>().LightColor = ui.beforeC;
+                    else
+                        ui.set.color = ui.beforeC;
+                }
             }
-            else if (ui.before != null && (!ui.before.name.StartsWith("pa") || ui.before.name.StartsWith("pA")))
+            else if (ui.before != null && (ui.before.name != "GX" && !ui.before.name.StartsWith("pa") && !ui.before.name.StartsWith("pA")))
             {
                 string key = ui.before.name.Substring(0, 2);
                 fm.Remove(key);
@@ -393,7 +406,7 @@ public class DressManager : MonoBehaviour
                 {
                     cpa.UpdateColorAction += () => { ui.set2.color = cpa.Color; };
                 }
-               
+
                 if (ui.set.sprite != null && ui.set.sprite.name == "hart")
                 {
                     setUpParticles(xtra[19], 1);
@@ -411,7 +424,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 }
             }
         }
-        else if (ui.before != null)
+        else if (ui.before != null && (ui.before.name.StartsWith("pa") || ui.before.name.StartsWith("pA")))
         {
             setUpParticles(ui.before, 0);
         }
@@ -420,16 +433,20 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
     public void setUpParticles(Sprite particle, int index, bool random = false)
     {
-        if (isEquippedParticle(particle)){
+        if (isEquippedParticle(particle))
+        {
             var main2 = GameObject.FindGameObjectWithTag("Finish").transform.Find(particle.name).GetComponent<ParticleSystem>().main;
-              Color original = main2.startColor.colorMin;
-              cpa.UpdateColorAction += () =>
+            Color original = main2.startColor.colorMin;
+            cpa.UpdateColorAction += () =>
+          {
+              main2.startColor = new ParticleSystem.MinMaxGradient(cpa.Color,
+              new Color(cpa.Color.r, cpa.Color.g, cpa.Color.b, 0.2f));
+          };
+            x.onClick.AddListener(() =>
             {
-                main2.startColor = new ParticleSystem.MinMaxGradient(cpa.Color,
-                new Color(cpa.Color.r, cpa.Color.g, cpa.Color.b, 0.2f));
-            };
-             x.onClick.AddListener(()=>{main2.startColor = new ParticleSystem.MinMaxGradient(original,
-                            new Color(original.r, original.g, original.b, 0.2f));});
+                main2.startColor = new ParticleSystem.MinMaxGradient(original,
+    new Color(original.r, original.g, original.b, 0.2f));
+            });
             return;
         }
         GameObject go = new GameObject();
@@ -765,7 +782,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
         //WaterfallScript
         next = getnext(index++, items[0]);
         e = isEquipped("wf");
-        next.SetItem(null, itemType.WaterfallScript, this, fm.faceSet, e, e ? fm.XtraStuff["wf"].color : Color.white);
+        next.SetItem(null, itemType.WaterfallScript, this, fm.faceSet, e, e ? fm.XtraStuff["wf"].GetComponent<WaterfallScript>().LightColor : Color.white);
         //glitch
         next = getnext(index++, items[0]);
         e = isEquipped("GX");

@@ -685,8 +685,11 @@ Input.GetTouch(0).position;
                 break;
             case itemType.WaterfallScript:
                 setHm(Vector2.zero, bg, bg.transform.parent, 0, "wf", ref hm);
-                if (hm.set.gameObject.GetComponent<WaterfallScript>() == null)
+                WaterfallScript wf = hm.set.gameObject.GetComponent<WaterfallScript>();
+                if (wf == null)
                     hm.set.gameObject.AddComponent<WaterfallScript>();
+                else   
+                    hm.beforeC=wf.LightColor;
                 hm.set.sprite=null;
                 hm.set.gameObject.name = "wf";
                 break;
@@ -696,13 +699,14 @@ Input.GetTouch(0).position;
                     Camera.main.gameObject.AddComponent<Glitch>().colorDrift = 0.25f;
                     XtraStuff["GX"] = null;
                 }
+                hm.before=newThang;
                 break;
 
         }
 
         if (hm.set != null)
         {
-            if (hm.set != bg) hm.beforeC = hm.set.color;
+            if (hm.set != bg && it != itemType.WaterfallScript) hm.beforeC = hm.set.color;
             if (newThang != null)
             {
                 hm.set.sprite = newThang;

@@ -15,7 +15,7 @@ public class ShopItem : MonoBehaviour
    DressManager dm, Func<Sprite, itemType, UndoInfo> faceSet,
   bool equipped)
     {
-        helper(GetComponent<Image>(), smth, i, dm, faceSet, equipped);
+        Helper(GetComponent<Image>(), smth, i, dm, faceSet, equipped);
     }
 
     public void SetItem(Sprite smth, itemType i,
@@ -23,11 +23,11 @@ public class ShopItem : MonoBehaviour
   bool equipped, Color change)
     {
         Image im = GetComponent<Image>();
-        helper(im, smth, i, dm, faceSet, equipped);
+        Helper(im, smth, i, dm, faceSet, equipped);
         im.color = change;
     }
 
-    void helper(Image im, Sprite smth, itemType i,
+    void Helper(Image im, Sprite smth, itemType i,
       DressManager dm, Func<Sprite, itemType, UndoInfo> faceSet,
 bool equipped)
     {
@@ -35,6 +35,42 @@ bool equipped)
         im.sprite = smth;
         im.color = Color.white;
         Button b = GetComponent<Button>();
+        SetUpButton(b, smth, i, dm, faceSet, cpa);
+
+
+        if (equipped)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+        if (i == itemType.WaterfallScript)
+        {
+            im.sprite = Resources.Load<Sprite>("WaterfallTexture");
+
+        }
+        else if (i == itemType.WaterScript)
+        {
+            im.sprite = Resources.Load<Sprite>("Water");
+
+        }
+        else if (i == itemType.glitch)
+        {
+            im.type = Image.Type.Sliced;
+            dm.Switch += () => { im.type = Image.Type.Simple; 
+            
+            };
+
+        }
+        gameObject.SetActive(true);
+    }
+
+
+    void SetUpButton(Button b, Sprite smth, itemType i,
+      DressManager dm, Func<Sprite, itemType, UndoInfo> faceSet, ColorPicker cpa)
+    {
         b.onClick.RemoveAllListeners();
         b.onClick.AddListener(() =>
         {
@@ -54,6 +90,7 @@ bool equipped)
                 {
                     g.SetActive(false);
                 });
+                
 
                 if (i == itemType.eyes)
                 {
@@ -102,14 +139,7 @@ bool equipped)
                     dm.x.onClick.AddListener(() =>
                     {
                         one.transform.GetChild(2).eulerAngles = Vector3.zero;
-                    });
-
-                    dm.x.onClick.AddListener(() =>
-                    {
-
-
                         fs.set.rectTransform.sizeDelta = origSize;
-
                         dm.fm.VertNose = VertNose;
 
                     });
@@ -128,7 +158,7 @@ bool equipped)
                     float ratio = 0.4f;
                     float ratio2 = 0.2f;
                     Glitch ag = Camera.main.GetComponent<Glitch>();
-
+                    
                     one.value = ag.colorDrift;
                     two.value = ag.verticalJump / ratio2;
 
@@ -142,13 +172,24 @@ bool equipped)
                         ag.verticalJump = val * ratio2;
                     });
 
-                    dm.x.onClick.AddListener(() =>
+                    
+
+                    if (!transform.GetChild(0).gameObject.activeSelf)
                     {
-                        Destroy(ag);
-                        dm.fm.XtraStuff.Remove("GX");
-                    });
-
-
+                        dm.x.onClick.AddListener(() =>
+                            {
+                                Destroy(ag);
+                                dm.fm.XtraStuff.Remove("GX");
+                            });
+                    }else{
+                        float cD = ag.colorDrift;
+                    float vJ = ag.verticalJump;
+                        dm.x.onClick.AddListener(() =>
+                            {
+                                ag.colorDrift=cD;
+                                ag.verticalJump=vJ;
+                            });
+                    }
                 }
                 else if (i == itemType.eyelid)
                 {
@@ -193,38 +234,46 @@ bool equipped)
 
                 }
             }
-            else if (fs.set != null && fs.set.gameObject.name == "iris")
-            {
-                Transform left = cpa.transform.parent.GetChild(5);
-                left.gameObject.SetActive(true);
-                Transform right = cpa.transform.parent.GetChild(6);
-                right.gameObject.SetActive(true);
-                cpa.Color = fs.set.color;
-                dm.x.onClick.AddListener(() =>
-                {
-                    left.gameObject.SetActive(false);
-                    right.gameObject.SetActive(false);
-                });
-                cpa.gameObject.SetActive(true);
-                cpa.Reset();
-
-
-            }
             else
             {
                 if (fs.set != null)
                 {
-                    if (!equipped)
+                    if (fs.set.gameObject.name == "iris")
                     {
-                        if (i == itemType.WaterScript)
+                        Transform left = cpa.transform.parent.GetChild(5);
+                        left.gameObject.SetActive(true);
+                        Transform right = cpa.transform.parent.GetChild(6);
+                        right.gameObject.SetActive(true);
+                        cpa.Color = fs.set.color;
+                        dm.x.onClick.AddListener(() =>
+                        {
+                            left.gameObject.SetActive(false);
+                            right.gameObject.SetActive(false);
+                        });
+                        cpa.gameObject.SetActive(true);
+                        cpa.Reset();
+
+
+                    }
+                    else if (i == itemType.WaterScript)
+                    {
+                        if (!transform.GetChild(0).gameObject.activeSelf)
                         {
                             dm.x.onClick.AddListener(() =>
-                                {
-                                    dm.fm.XtraStuff.Remove("wd");
-                                    Destroy(dm.fm.transform.Find("wd").gameObject);
-                                });
+                                    {
+                                        dm.fm.XtraStuff.Remove("wd");
+                                        Destroy(dm.fm.transform.Find("wd").gameObject);
+                                    });
                         }
-                        else if (i == itemType.WaterfallScript)
+                        else
+                        {
+                            cpa.Color = fs.set.color;
+                            cpa.Reset();
+                        }
+                    }
+                    else if (i == itemType.WaterfallScript)
+                    {
+                        if (!transform.GetChild(0).gameObject.activeSelf)
                         {
                             dm.x.onClick.AddListener(() =>
                                 {
@@ -232,72 +281,45 @@ bool equipped)
                                     Destroy(dm.fm.transform.Find("wf").gameObject);
                                 });
                         }
+                        else
+                        {
+                            cpa.Color = fs.set.GetComponent<WaterfallScript>().LightColor;
+                            cpa.Reset();
+                        }
                     }
-
-
-                    if (i == itemType.bg && fs.set.sprite == null) cpa.Color = Camera.main.backgroundColor;
-                    else cpa.Color = fs.set.color;
-                    cpa.Reset();
+                    else if (i == itemType.bg && fs.set.sprite == null) { cpa.Color = Camera.main.backgroundColor; cpa.Reset(); }
+                    else
+                    {
+                        cpa.Color = fs.set.color;
+                        cpa.Reset();
+                    }
                 }
                 else
                 {
-                    if (i == itemType.particles && transform.GetChild(0).gameObject.activeSelf)
+                    if (i == itemType.particles)
                     {
-                        cpa.Color = GameObject.FindGameObjectWithTag("Finish").transform.Find(smth.name).GetComponent<ParticleSystem>().main.startColor.colorMin;
-                        cpa.Reset();
-                    }
-                    else
-                    {
-                        dm.x.onClick.AddListener(() =>
+                        if (transform.GetChild(0).gameObject.activeSelf)
                         {
-                            string key = smth.name.Substring(0, 2);
-                            dm.fm.Remove(key);
-                        });
+                            cpa.Color = GameObject.FindGameObjectWithTag("Finish").transform.Find(smth.name).GetComponent<ParticleSystem>().main.startColor.colorMin;
+                            cpa.Reset();
+                        }
+                        else
+                        {
+                            dm.x.onClick.AddListener(() =>
+                            {
+                                string key = smth.name.Substring(0, 2);
+                                dm.fm.Remove(key);
+                            });
+                        }
                     }
-
                 }
-
                 cpa.gameObject.SetActive(true);
-
             }
             dm.colorPick(fs, transform.GetChild(0).gameObject);
-
-
         });
 
-
-
-        if (equipped)
-        {
-
-            transform.GetChild(0).gameObject.SetActive(true);
-
-        }
-        else
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
-        if (i == itemType.WaterScript)
-        {
-            WaterScript wd = gameObject.AddComponent<WaterScript>();
-            dm.Switch += () => { Destroy(wd); };
-
-        }
-        else if (i == itemType.WaterfallScript)
-        {
-            WaterfallScript wd = gameObject.AddComponent<WaterfallScript>();
-            dm.Switch += () => { Destroy(wd); };
-
-
-        }
-        else if (i == itemType.glitch)
-        {
-            im.type = Image.Type.Sliced;
-            dm.Switch += () => { im.type = Image.Type.Simple; };
-
-        }
-        gameObject.SetActive(true);
     }
+
 
 
 }
