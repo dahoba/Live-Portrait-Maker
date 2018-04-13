@@ -450,9 +450,11 @@ Mathf.Lerp(1, 0.35f, cpa.B));
             return;
         }
         GameObject go = new GameObject();
+        
         go.transform.SetParent(GameObject.FindGameObjectWithTag("Finish").transform, false);
         ParticleSystem ps = go.AddComponent<ParticleSystem>();
-
+        go.name = particle.name;
+        
         if (index < go.transform.parent.childCount) go.transform.SetSiblingIndex(index);
         var main = ps.main;
 
@@ -477,7 +479,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 new_ = Resources.Load<Material>("Star");
                 //start size, start speed, shape, lifetime, emission rate, 
                 go.transform.localPosition = new Vector3(0, 0, 0);
-                go.name = "pArticle_sparkle";
+              
                 main.startLifetime = 5;
                 main.maxParticles = 15;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.05f, 0.6f);
@@ -505,7 +507,6 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 new_ = Resources.Load<Material>("Hart");
 
                 go.transform.localPosition = new Vector3(0, Screen.height / 3.5f, 0);
-                go.name = "hartic";
                 main.startLifetime = 3;
                 main.maxParticles = 8;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 0.4f);
@@ -533,7 +534,6 @@ Mathf.Lerp(1, 0.35f, cpa.B));
             case "particle_snow":
                 new_ = Resources.Load<Material>("Snow");
                 go.transform.localPosition = new Vector3(0, Screen.height / 2, 0);
-                go.name = "particle_snow";
                 sm.shapeType = ParticleSystemShapeType.BoxEdge;
                 sm.scale = new Vector3(4.5f, 1, 1);
 
