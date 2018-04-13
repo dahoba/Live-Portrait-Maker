@@ -17,6 +17,6 @@ The following (free) assets were used:
 ## License
 Copyright (C) 2018 Angela He
 
-The artwork is under the CC-BY-NC license and can not be used in commercial products.
+The artwork is under the CC-BY-NC license and cannot be used in commercial products.
 
 The rest of the project is licensed under the terms of the MIT license.
