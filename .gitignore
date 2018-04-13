@@ -33,3 +33,12 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+.DS_Store
+.DS_Store
+Live Portrait Maker/.DS_Store
+Live Portrait Maker/Assets/.DS_Store
+Live Portrait Maker/Assets/Graphics/.DS_Store
+Live Portrait Maker/Assets/Graphics/doll/.DS_Store
+Live Portrait Maker/Assets/Graphics/doll/1eye/.DS_Store
+Live Portrait Maker/Assets/Graphics/doll/xtra/.DS_Store
