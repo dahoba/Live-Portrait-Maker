@@ -450,11 +450,11 @@ Mathf.Lerp(1, 0.35f, cpa.B));
             return;
         }
         GameObject go = new GameObject();
-        
+
         go.transform.SetParent(GameObject.FindGameObjectWithTag("Finish").transform, false);
         ParticleSystem ps = go.AddComponent<ParticleSystem>();
         go.name = particle.name;
-        
+
         if (index < go.transform.parent.childCount) go.transform.SetSiblingIndex(index);
         var main = ps.main;
 
@@ -479,7 +479,7 @@ Mathf.Lerp(1, 0.35f, cpa.B));
                 new_ = Resources.Load<Material>("Star");
                 //start size, start speed, shape, lifetime, emission rate, 
                 go.transform.localPosition = new Vector3(0, 0, 0);
-              
+
                 main.startLifetime = 5;
                 main.maxParticles = 15;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.05f, 0.6f);
@@ -533,16 +533,16 @@ Mathf.Lerp(1, 0.35f, cpa.B));
 
             case "particle_snow":
                 new_ = Resources.Load<Material>("Snow");
-                go.transform.localPosition = new Vector3(0, Screen.height / 2, 0);
+                go.transform.localPosition = new Vector3(0, Screen.height / 2 + 10, 0);
                 sm.shapeType = ParticleSystemShapeType.BoxEdge;
-                sm.scale = new Vector3(4.5f, 1, 1);
+                sm.scale = new Vector3(4.5f, 0.045964f, 1);
 
                 main.gravityModifier = 0.01f;
                 main.startSize = new ParticleSystem.MinMaxCurve(UnityEngine.Random.Range(0.2f, 0.4f),
                 UnityEngine.Random.Range(0.45f, 0.6f));
 
                 main.startLifetime = 15.5f;
-                main.maxParticles = 30;
+                main.maxParticles = 40;
                 main.startSpeed = new ParticleSystem.MinMaxCurve(0.1f, 2);
 
 

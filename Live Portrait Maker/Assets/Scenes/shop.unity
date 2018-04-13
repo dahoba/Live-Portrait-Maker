@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1328892699}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2617,8 +2617,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -34.203674, y: 34.203568}
-  m_SizeDelta: {x: 68.5, y: 68.5}
+  m_AnchoredPosition: {x: -44.79339, y: 34.203568}
+  m_SizeDelta: {x: 89.68, y: 68.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707939550
 MonoBehaviour:
@@ -2641,7 +2641,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d0eed82d8a7064f07ad1a7ffc7dfe3f5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
