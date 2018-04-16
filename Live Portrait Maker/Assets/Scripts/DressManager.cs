@@ -344,7 +344,6 @@ public class DressManager : MonoBehaviour
         }
     }
 
-
     public void changeSkin(Color change)
     {
         int i = 0;
@@ -352,6 +351,20 @@ public class DressManager : MonoBehaviour
         for (; i < fm.skin.Length; i++)
         {
             fm.skin[i].color = change;
+        }
+    }
+
+
+    public void changeSkin(HSBColor change)
+    {
+        int i = 0;
+        change.s*=0.7f;
+        change.b+=0.12f*(1-change.b);
+        Color c = HSBColor.ToColor(change);
+        fm.skin[i++].color = new Color(c.r * 1.2f, c.g * 1.2f, c.b * 1.2f);
+        for (; i < fm.skin.Length; i++)
+        {
+            fm.skin[i].color = c;
         }
     }
 
@@ -384,7 +397,7 @@ public class DressManager : MonoBehaviour
             {
                 cpa.UpdateColorAction += () =>
                 {
-                    changeSkin(cpa.Color);
+                    changeSkin(new HSBColor(cpa.H,cpa.S,cpa.B,1));
                 };
             }
             else if (ui.set.gameObject.name == "wf")

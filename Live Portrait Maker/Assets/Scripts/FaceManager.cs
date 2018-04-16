@@ -46,7 +46,7 @@ public class FaceManager : MonoBehaviour
     public event Action OnDoubleTap;
 
     //defines the maximum time between two taps to make it double tap
-    private float tapThreshold = 0.25f;
+    private float tapThreshold = 0.3f;
     public Action updateDelegate;
     private float tapTimer = 0.0f;
     private bool tap = false;
@@ -84,6 +84,7 @@ public class FaceManager : MonoBehaviour
         XtraStuff.Add("l_", lips);
         XtraStuff.Add("n_", skin[0]);
         XtraStuff.Add("bg", bg);
+        XtraStuff.Add("bl", skin[6]);
 
         UnityEngine.Random.InitState(System.Environment.TickCount);
 
@@ -412,9 +413,9 @@ Input.GetTouch(0).position;
                         {
 
                             hm.set = newImgAt(key, new Vector2(-3f, 7.783465f),
-                            leftE[2]);
+                            leftE[2],null,1);
                             hm.set2 = newImgAt(key, new Vector2(-3f, 7.783465f),
-                            rightE[2]);
+                            rightE[2],null,1);
 
                         }
                         else
@@ -428,9 +429,9 @@ Input.GetTouch(0).position;
                         if (!XtraStuff.ContainsKey(key))
                         {
                             hm.set = newImgAt(key, new Vector2(9.5f, 0.5f),
-                            leftE[2]);
+                            leftE[2],null,1);
                             hm.set2 = newImgAt(key, new Vector2(-28.2f, 0.5f),
-                            rightE[2]);
+                            rightE[2],null,1);
                         }
                         else
                         {
@@ -445,9 +446,9 @@ Input.GetTouch(0).position;
                         if (!XtraStuff.ContainsKey(key))
                         {
                             hm.set = newImgAt(key, new Vector2(-4.5f, -5.4f),
-                            leftE[2], leftE[1].transform);
+                            leftE[2], leftE[1].transform,1);
                             hm.set2 = newImgAt(key, new Vector2(-4.5f, -5.4f),
-                            rightE[2], rightE[1].transform);
+                            rightE[2], rightE[1].transform,1);
                         }
                         else
                         {
@@ -493,7 +494,7 @@ Input.GetTouch(0).position;
                 key, ref hm);
                 break;
             case itemType.freckles:
-                setHm(new Vector2(0f, -34), skin[6], null, skin[1].transform.childCount - 2,
+                setHm(new Vector2(0f, -44.24f), skin[6], null, skin[0].transform.GetSiblingIndex()+1,
                 key, ref hm);
                 break;
             case itemType.starfreckles:
