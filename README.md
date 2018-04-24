@@ -1,4 +1,4 @@
-![banner](https://img.itch.zone/aW1nLzExNjU5MjQucG5n/original/eMa3fc.png "banner")
+![banner](https://img.itch.zone/aW1nLzExOTEwODUucG5n/original/cOtWHW.png "banner")
 
 # Live Portrait Maker 🎉
 
